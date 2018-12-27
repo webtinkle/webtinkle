@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "main": "build/index.js",
   "author": "Norech",
-  "license": "MIT",
+  "license": "GPL-3.0",
   "dependencies": {
     "commander": "^2.19.0",
     "inquirer": "^6.2.1",
