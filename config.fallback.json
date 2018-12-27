@@ -1,0 +1,3 @@
+{
+    "nginx.configPath": "/etc/nginx/conf.d/"
+}

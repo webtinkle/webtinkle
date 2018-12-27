@@ -1,0 +1,7 @@
+node_modules
+build
+ignore
+templates
+
+config.json
+yarn*.log

@@ -1,0 +1,31 @@
+{
+  "name": "webtinkle",
+  "version": "0.0.1",
+  "main": "build/index.js",
+  "author": "Norech",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.19.0",
+    "inquirer": "^6.2.1",
+    "nginx-config-ast": "^0.0.7",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.5",
+    "winston": "^3.1.0"
+  },
+  "devDependencies": {
+    "@types/commander": "^2.12.2",
+    "@types/inquirer": "^0.0.43",
+    "@types/node": "^10.12.12",
+    "@types/request-promise-native": "^1.0.15",
+    "@types/winston": "^2.4.4",
+    "gulp": "^3.0.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-typescript": "^5.0.0",
+    "tslint": "^5.11.0",
+    "typescript": "^3.2.2"
+  },
+  "scripts": {
+    "cli": "node build/cli",
+    "prepublish": "gulp prod"
+  }
+}

@@ -1,0 +1,8 @@
+.vscode
+ignore
+src
+templates
+
+ts*.json
+yarn*.log
+gulpfile.js
