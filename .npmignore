@@ -3,6 +3,7 @@ ignore
 src
 templates
 
+config.json
 ts*.json
 yarn*.log
 gulpfile.js

@@ -1,6 +1,8 @@
 {
   "name": "webtinkle",
-  "version": "0.0.3",
+  "description": "NGINX configuration generator tool",
+  "repository": "https://github.com/webtinkle/webtinkle.git",
+  "version": "0.0.4",
   "main": "build/index.js",
   "author": "Norech",
   "license": "GPL-3.0",

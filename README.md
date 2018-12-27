@@ -1,4 +1,5 @@
 # WebTinkle
+NGINX configuration generator tool
 
 > /!\ Currently, WebTinkle is in an early stage and must not be used in production /!\
 
