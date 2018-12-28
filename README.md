@@ -38,14 +38,14 @@ webtinkle remove <domain>
 
 
 ## Troubleshooting
-### nginx.configPath must point to a directory
+### nginx.configFolder must point to a directory
 It means that your NGINX configuration path is not a valid folder.
-nginx.configPath must point to a path where he would be able to put the NGINX configurations.
+nginx.configFolder must point to a path where he would be able to put the NGINX configurations.
 In most computers, this folder is located at `/etc/nginx/conf.d/`, but sometimes, it must point to a different folder.
 
 To change the location where WebTinkle put its configurations, you must do the command:
 ```
-webtinkle config nginx.configPath <yourPath>
+webtinkle config nginx.configFolder <yourPath>
 ```
 
 

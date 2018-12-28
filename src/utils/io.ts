@@ -15,10 +15,10 @@ export function rimraf(path: string) {
       }
 }
 
-export function getNginxConfigPath() {
-    const configPath = getConfigOption("nginx.configPath");
-    if (!lstatSync(configPath).isDirectory()) {
-        throw new Error("nginx.configPath must point to a directory.");
+export function getNginxConfigFolder() {
+    const configFolder = getConfigOption("nginx.configFolder");
+    if (!lstatSync(configFolder).isDirectory()) {
+        throw new Error("nginx.configFolder must point to a directory.");
     }
-    return configPath;
+    return configFolder;
 }

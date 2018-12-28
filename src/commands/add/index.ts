@@ -5,7 +5,7 @@ import { join } from "path";
 import { generateConfigFromTemplate } from "../../nginx/configPreprocessor";
 import { Template } from "../../nginx/Template";
 import { catchActionErrors } from "../../utils/error";
-import { getNginxConfigPath } from "../../utils/io";
+import { getNginxConfigFolder } from "../../utils/io";
 import { logger } from "../../utils/logging";
 
 export function initialize(program: CommanderStatic) {
@@ -20,7 +20,7 @@ export function initialize(program: CommanderStatic) {
 }
 
 export async function execute(domain: string, opt: any) {
-    const nginxConfigPath = getNginxConfigPath();
+    const nginxConfigFolder = getNginxConfigFolder();
 
     const templateName = typeof opt.template !== "undefined" && opt.template != null ? opt.template : "default";
     const path = __dirname + "/../../../templates/" + templateName;
@@ -30,14 +30,14 @@ export async function execute(domain: string, opt: any) {
     let removeOldFilesConfirmed = false;
     logger.debug("Checking for existing files.");
 
-    if (existsSync(join(nginxConfigPath, domain + ".conf"))) {
+    if (existsSync(join(nginxConfigFolder, domain + ".conf"))) {
         removeOldFiles = true;
         logger.debug("Existing '" + domain + ".conf' found.");
     }
 
-    if (existsSync(join(nginxConfigPath, domain + ".wtk"))) {
+    if (existsSync(join(nginxConfigFolder, domain + ".wtk"))) {
         logger.debug("Existing '" + domain + ".wtk' found.");
-        wtkFileData = JSON.parse(readFileSync(join(nginxConfigPath, domain + ".wtk")).toString());
+        wtkFileData = JSON.parse(readFileSync(join(nginxConfigFolder, domain + ".wtk")).toString());
         if (wtkFileData.template !== templateName) {
             removeOldFiles = true;
             logger.debug("File template don't correspond to chosen template.");
@@ -77,11 +77,11 @@ export async function execute(domain: string, opt: any) {
         logger.silly("Removal confirmed.");
 
         wtkFileData = {};
-        if (existsSync(join(nginxConfigPath, domain + ".conf"))) {
-            unlinkSync(join(nginxConfigPath, domain + ".conf"));
+        if (existsSync(join(nginxConfigFolder, domain + ".conf"))) {
+            unlinkSync(join(nginxConfigFolder, domain + ".conf"));
         }
-        if (existsSync(join(nginxConfigPath, domain + ".wtk"))) {
-            unlinkSync(join(nginxConfigPath, domain + ".wtk"));
+        if (existsSync(join(nginxConfigFolder, domain + ".wtk"))) {
+            unlinkSync(join(nginxConfigFolder, domain + ".wtk"));
         }
     }
 
@@ -137,10 +137,10 @@ export async function execute(domain: string, opt: any) {
 
     logger.debug(config);
 
-    writeFileSync(join(nginxConfigPath, domain + ".conf"), config);
+    writeFileSync(join(nginxConfigFolder, domain + ".conf"), config);
 
     if (hasTemplateScript && wtkFileData !== "" && wtkFileData !== "{}") {
-        writeFileSync(join(nginxConfigPath, domain + ".wtk"), JSON.stringify(wtkFileData));
+        writeFileSync(join(nginxConfigFolder, domain + ".wtk"), JSON.stringify(wtkFileData));
     }
     logger.info("Added " + domain + " to NGINX.");
     logger.info("Restart NGINX to apply changes.");
