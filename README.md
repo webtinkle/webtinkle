@@ -61,6 +61,19 @@ yarn
 It should load all dependencies. After that you can contribute.
 
 
+### Build Project
+Gulp must be used to build WebTinkle so be sure to have it. When you have it, depending of the wanted build kind, execute the following commands.
+#### Developement Build
+Developement build are builds made to be built faster and to provide more informations to developers.
+```bash
+gulp dev
+```
+#### Production Build
+Production build are build made to be more optimized for a publication.
+```bash
+gulp prod
+```
+
 ### Execute Commands
 WebTinkle provides a script to test the commands, to use it, instead of using `webtinkle` at the start of your commands, use the following:
 ```bash
@@ -68,3 +81,18 @@ yarn cli ...
 ```
 
 For example, `webtinkle install proxy` becomes `yarn cli install proxy`.
+
+### Show Logs
+WebTinkle has a command option named `--loglevel`, or simply `-L`. It can be used to provide more or less logs depending of the selected level.
+```
+webtinkle [command] -L <level>
+```
+
+The available log levels are enumerated below. You can use their name or their level id as argument. Logs with lower or equal levels than the choosen log level will be printed in the console.
+* error (0)
+* warn (1)
+* info (2)
+* verbose (3)
+* debug (4)
+* silly (5)
+
