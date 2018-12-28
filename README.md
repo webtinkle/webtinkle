@@ -4,6 +4,7 @@ NGINX configuration generator tool
 > /!\ Currently, WebTinkle is in an early stage and must not be used in production /!\
 
 ## Install
+WebTinkle depends on NodeJS 6.4.0 or later and can be installed with npm (generally bundled with NodeJS) using this command:
 ```bash
 npm i -g webtinkle
 ```
@@ -42,7 +43,28 @@ It means that your NGINX configuration path is not a valid folder.
 nginx.configPath must point to a path where he would be able to put the NGINX configurations.
 In most computers, this folder is located at `/etc/nginx/conf.d/`, but sometimes, it must point to a different folder.
 
-To change the location where WebTinkle put his configurations, you must do the command:
+To change the location where WebTinkle put its configurations, you must do the command:
 ```
 webtinkle config nginx.configPath <yourPath>
 ```
+
+
+
+## Contribute
+### Getting Started
+First, WebTinkle requires yarn to handle its dependencies, so make sure you have it to avoid trouble.
+
+To start, you need to clone the repository. When you've done this, install all dependencies using the command below:
+```bash
+yarn
+```
+It should load all dependencies. After that you can contribute.
+
+
+### Execute Commands
+WebTinkle provides a script to test the commands, to use it, instead of using `webtinkle` at the start of your commands, use the following:
+```bash
+yarn cli ...
+```
+
+For example, `webtinkle install proxy` becomes `yarn cli install proxy`.
