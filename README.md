@@ -13,25 +13,25 @@ npm i -g webtinkle
 
 ### Templates
 The most important part of WebTinkle is templating. Templates allows to make an NGINX configuration adapted to the needs.
-WebTinkle doesn't contains any templates himself, but provides a command to download templates, the `webtinkle install` command:
+WebTinkle doesn't contains any templates himself, but provides a command to download templates, the [`webtinkle install`](https://github.com/webtinkle/webtinkle/wiki/Command:-webtinkle-install) command:
 ```bash
 webtinkle install <templateName>
 ```
 It will download the specified template from [this GitHub repository](https://github.com/webtinkle/webtinkle-templates) and install those automatically.
 
-If you want to remove an installed template, use `webtinkle uninstall` command:
+If you want to remove an installed template, use [`webtinkle uninstall`](https://github.com/webtinkle/webtinkle/wiki/Command:-webtinkle-uninstall)  command:
 ```bash
 webtinkle uninstall <templateName>
 ```
 
 ### Website
 
-To add a website to NGINX configs, use the `webtinkle add` command:
+To add a website to NGINX configs, use the [`webtinkle add`](https://github.com/webtinkle/webtinkle/wiki/Command:-webtinkle-add) command:
 ```bash
 webtinkle add <domain> -t <templateName>
 ```
 
-To remove a website from NGINX configs, use the `webtinkle remove` command:
+To remove a website from NGINX configs, use the [`webtinkle remove`](https://github.com/webtinkle/webtinkle/wiki/Command:-webtinkle-remove) command:
 ```bash
 webtinkle remove <domain>
 ```
