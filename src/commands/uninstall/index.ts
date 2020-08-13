@@ -1,8 +1,8 @@
 import { CommanderStatic } from "commander";
 import { join } from "path";
 import { catchActionErrors } from "../../utils/error";
-import { rimraf } from "../../utils/io";
 import { logger } from "../../utils/logging";
+import rimraf from "rimraf";
 
 export function initialize(program: CommanderStatic) {
 
@@ -21,6 +21,6 @@ export async function execute(templateName: string, opt: any) {
     const templateFolder = join(__dirname, "../../../templates");
 
     logger.info("Removing template '" + templateName + "'");
-    rimraf(join(templateFolder, templateName));
+    rimraf.sync(join(templateFolder, templateName));
     logger.info("Removed template '" + templateName + "'");
 }

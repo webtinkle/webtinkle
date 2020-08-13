@@ -1,8 +1,8 @@
 import { existsSync, mkdirSync, writeFileSync } from "fs";
 import { join } from "path";
-import axios from "axios";
-import { rimraf } from "./io";
 import { logger } from "./logging";
+import axios from "axios";
+import rimraf from "rimraf";
 
 export interface IRepo {
     user: string;
@@ -41,7 +41,7 @@ export async function getFileData(repo: IRepo, path: string) {
 export async function download(repo: IRepo, originPath: string, localPath: string) {
     if (await isDirectory(repo, originPath)) {
         if (existsSync(localPath)) {
-            rimraf(localPath);
+            rimraf.sync(localPath);
         }
         mkdirSync(localPath);
 
