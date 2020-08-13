@@ -10,22 +10,23 @@
     "webtinkle": "./bin/cli.js"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "commander": "^2.19.0",
-    "inquirer": "^6.2.1",
+    "inquirer": "^6.5.2",
     "nginx-config-ast": "^0.0.7",
-    "request": "^2.88.0",
-    "request-promise-native": "^1.0.5",
+    "rimraf": "^3.0.2",
     "winston": "^3.1.0"
   },
   "devDependencies": {
     "@types/commander": "^2.12.2",
+    "@types/gulp": "^4.0.6",
     "@types/inquirer": "^0.0.43",
     "@types/node": "^10.12.12",
-    "@types/request-promise-native": "^1.0.15",
+    "@types/rimraf": "^3.0.0",
     "@types/winston": "^2.4.4",
-    "gulp": "^3.0.0",
-    "gulp-clean": "^0.4.0",
-    "gulp-typescript": "^5.0.0",
+    "gulp": "^4.0.2",
+    "gulp-typescript": "^5.0.1",
+    "ts-node": "^8.10.2",
     "tslint": "^5.11.0",
     "typescript": "^3.2.2"
   },

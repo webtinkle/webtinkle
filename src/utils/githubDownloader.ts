@@ -1,6 +1,6 @@
 import { existsSync, mkdirSync, writeFileSync } from "fs";
 import { join } from "path";
-import request from "request-promise-native";
+import axios from "axios";
 import { rimraf } from "./io";
 import { logger } from "./logging";
 
@@ -10,30 +10,32 @@ export interface IRepo {
     branch: string;
 }
 
-export function getDirectoryData(repo: IRepo, path: string) {
-    return request({
+export async function getDirectoryData(repo: IRepo, path: string) {
+    const req = await axios({
+        headers: {
+            "User-Agent": "webtinkle",
+            "Content-Type": "application/json",
+        },
+        method: "get",
+        url: `https://api.github.com/repos/${repo.user}/${repo.repo}/contents/${path}?ref=${repo.branch}`,
+    });
+    return req.data;
+}
+
+export async function isDirectory(repo: IRepo, path: string) {
+    const res = await getDirectoryData(repo, path);
+    return res instanceof Array;
+}
+
+export async function getFileData(repo: IRepo, path: string) {
+    const req = await axios({
         headers: {
             "User-Agent": "webtinkle",
         },
-        json: true,
         method: "get",
-        uri: `https://api.github.com/repos/${repo.user}/${repo.repo}/contents/${path}?ref=${repo.branch}`,
+        url: `https://raw.githubusercontent.com/${repo.user}/${repo.repo}/${repo.branch}/${path}`,
     });
-}
-
-export function isDirectory(repo: IRepo, path: string) {
-    return getDirectoryData(repo, path)
-        .then((res) => res instanceof Array);
-}
-
-export function getFileData(repo: IRepo, path: string) {
-    return request({
-        headers: {
-            "User-Agent": "webtinkle",
-        },
-        method: "get",
-        uri: `https://raw.githubusercontent.com/${repo.user}/${repo.repo}/${repo.branch}/${path}`,
-    });
+    return req.data;
 }
 
 export async function download(repo: IRepo, originPath: string, localPath: string) {
