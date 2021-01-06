@@ -10,7 +10,7 @@
     "webtinkle": "./bin/cli.js"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "commander": "^2.19.0",
     "inquirer": "^6.5.2",
     "nginx-config-ast": "^0.0.7",
